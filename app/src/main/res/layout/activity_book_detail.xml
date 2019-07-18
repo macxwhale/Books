@@ -24,12 +24,13 @@
         android:layout_height="170dp"
         android:layout_marginTop="@dimen/std_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
-        app:srcCompat="@drawable/book"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Subtitle"
+        android:imageUrl="@{Book.thumbnail}"
         android:contentDescription="@string/image_cover" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tv_Title"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/std_margin"
@@ -44,7 +45,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvSubtitle"
+        android:id="@+id/tv_Subtitle"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -56,10 +58,11 @@
         android:text="@{Book.subTitle}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_Title" />
 
     <TextView
-        android:id="@+id/tvAuthor"
+        android:id="@+id/tv_Author"
+        android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,10 +71,10 @@
         android:layout_marginTop="@dimen/std_margin"
         android:text="@{Book.authors}"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_Subtitle" />
 
     <TextView
-        android:id="@+id/tvPublisher"
+        android:id="@+id/tv_Publisher"
         android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,7 +83,7 @@
         android:layout_marginTop="@dimen/std_margin"
         android:text="@{Book.publisher}"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tvAuthor" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_Author" />
 
     <TextView
         android:id="@+id/tvPublishedDate"
@@ -92,10 +95,10 @@
         android:layout_marginTop="@dimen/std_margin"
         android:text="@{Book.publishedDate}"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/tvPublisher" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_Publisher" />
 
     <TextView
-        android:id="@+id/tvDesc"
+        android:id="@+id/tv_Desc"
         android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
