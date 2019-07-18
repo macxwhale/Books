@@ -3,4 +3,5 @@
     <string name="error_data_msg">Error Loading Data From Google Books API</string>
     <string name="imd_desc">Book Icon</string>
     <string name="search">Search</string>
+    <string name="image_cover">Image Cover</string>
 </resources>
