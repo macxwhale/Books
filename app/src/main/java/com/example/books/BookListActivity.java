@@ -1,5 +1,6 @@
 package com.example.books;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,13 +31,24 @@ public class BookListActivity extends AppCompatActivity implements SearchView.On
         mLoadingProgress = findViewById(R.id.pbLoading);
         rvBooks = findViewById(R.id.rv_BooksList);
 
+        Intent intent = getIntent();
+        String query = intent.getStringExtra("Query");
+
+
         LinearLayoutManager booksLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL, false);
 
         rvBooks.setLayoutManager(booksLayoutManager);
 
+        URL bookUrl;
+
         try {
-            URL bookUrl = ApiUtil.buildURl("cooking");
+            if (query == null || query.isEmpty()) {
+                bookUrl = ApiUtil.buildURl("cooking");
+            } else {
+                bookUrl = new URL(query);
+            }
+
             new BooksQueryTask().execute(bookUrl);
         }
 
@@ -56,12 +68,23 @@ public class BookListActivity extends AppCompatActivity implements SearchView.On
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_advanced_search:
+                Intent intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public boolean onQueryTextSubmit(String query) {
         try {
             URL bookUrl = ApiUtil.buildURl(query);
             new BooksQueryTask().execute(bookUrl);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.d("Error", e.getMessage());
         }
         return false;
@@ -100,12 +123,14 @@ public class BookListActivity extends AppCompatActivity implements SearchView.On
             } else {
                 rvBooks.setVisibility(View.VISIBLE);
                 tvError.setVisibility(View.INVISIBLE);
-            }
-            ArrayList<Book> books = ApiUtil.getBooksFromJson(result);
-            String resultString = "";
 
-            BooksAdapter adapter = new BooksAdapter(books);
-            rvBooks.setAdapter(adapter);
+                ArrayList<Book> books = ApiUtil.getBooksFromJson(result);
+                String resultString = "";
+
+                BooksAdapter adapter = new BooksAdapter(books);
+                rvBooks.setAdapter(adapter);
+            }
+
         }
 
         @Override

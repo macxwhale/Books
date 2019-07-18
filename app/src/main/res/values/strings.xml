@@ -4,4 +4,10 @@
     <string name="imd_desc">Book Icon</string>
     <string name="search">Search</string>
     <string name="image_cover">Image Cover</string>
+    <string name="insert_title">Insert Title</string>
+    <string name="insert_authors">Insert Authors</string>
+    <string name="insert_publisher">Insert Publisher</string>
+    <string name="insert_isbn">Insert ISBN</string>
+    <string name="advanced_search">Advanced Search</string>
+    <string name="no_search_data">Please insert valid Search terms</string>
 </resources>
